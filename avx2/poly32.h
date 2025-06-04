@@ -15,7 +15,6 @@ typedef struct {
 
 void poly32_ntt(poly32 *r, const poly32 *a);
 void poly32_invntt(poly32 *r, const poly32 *a);
-void poly32_ntt_avx2(poly32 *r, const poly32 *a);
-void poly32_invntt_avx2(poly32 *r, const poly32 *a);
+
 
 #endif
