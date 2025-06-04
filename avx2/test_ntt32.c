@@ -7,8 +7,8 @@ int main() {
     for(int i=0;i<POLY32_N;i++)
         a.coeffs[i] = rand() % MOD32;
 
-    poly32_ntt(&b, &a);
-    poly32_invntt(&c, &b);
+    poly32_ntt_avx2(&b, &a);
+    poly32_invntt_avx2(&c, &b);
 
     for(int i=0;i<POLY32_N;i++) {
         if(a.coeffs[i] % MOD32 != c.coeffs[i]) {

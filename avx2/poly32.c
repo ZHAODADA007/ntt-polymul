@@ -1,11 +1,17 @@
 #include "poly32.h"
 
-#define ROOT 476477967u
-#define ROOT_INV 304459705u
-#define INV_N 994344961u
+#define ROOT 282u
+#define ROOT_INV 64375u
+#define INV_N 65281u
 
-static uint32_t mod_mul(uint32_t a, uint32_t b) {
-    return (uint64_t)a * b % MOD32;
+static inline uint32_t mod_mul(uint32_t a, uint32_t b) {
+    uint64_t t = (uint64_t)a * b;
+    uint32_t low = t & 0xFFFF;
+    uint32_t high = (t >> 16);
+    uint32_t res = low - high;
+    if((int32_t)res < 0) res += MOD32;
+    if(res >= MOD32) res -= MOD32;
+    return res;
 }
 
 static uint32_t mod_pow(uint32_t a, uint32_t e) {

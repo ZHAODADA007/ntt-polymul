@@ -4,7 +4,10 @@
 #include <stdint.h>
 
 #define POLY32_N 256
-#define MOD32 998244353u
+#define MOD32 65537u
+#define ROOT 282u
+#define ROOT_INV 64375u
+#define INV_N 65281u
 
 typedef struct {
     uint32_t coeffs[POLY32_N];
@@ -12,5 +15,7 @@ typedef struct {
 
 void poly32_ntt(poly32 *r, const poly32 *a);
 void poly32_invntt(poly32 *r, const poly32 *a);
+void poly32_ntt_avx2(poly32 *r, const poly32 *a);
+void poly32_invntt_avx2(poly32 *r, const poly32 *a);
 
 #endif
