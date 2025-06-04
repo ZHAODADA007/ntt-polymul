@@ -206,6 +206,9 @@ test_ntt1024n: $(SOURCES1024N) $(HEADERS) test_nttn.c cpucycles.c cpucycles.h
 test_ntt1024: $(SOURCES1024) $(HEADERS) test_ntt.c cpucycles.c cpucycles.h
 	$(CC) $(CFLAGS) $(SOURCES1024) -DNTRUHPS509 test_ntt.c cpucycles.c -o $@
 
+test_ntt32: poly32.c test_ntt32.c
+	$(CC) $(CFLAGS) poly32.c test_ntt32.c -o $@
+
 test_nttrange1024: $(SOURCES) $(HEADERS) test_ntt.c nttrange.c nttrange1024.c consts1024.c consts10247681.c consts102410753.c nttrange.h
 	$(CC) $(CFLAGS) $(SOURCES) -DNTRUHPS509 -DSCALAR_NTT test_ntt.c nttrange.c nttrange1024.c consts1024.c consts10247681.c consts102410753.c -o $@ -ldb
 
